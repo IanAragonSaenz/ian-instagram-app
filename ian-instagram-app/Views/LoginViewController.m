@@ -54,6 +54,7 @@
             [self errorFound:error.localizedDescription];
         }else{
             NSLog(@"login succesful");
+            [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
         }
     }];
 }
