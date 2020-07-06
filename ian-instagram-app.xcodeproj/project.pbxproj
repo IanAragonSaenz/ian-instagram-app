@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		D1CD134A24B3C97800913AE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD134924B3C97800913AE7 /* main.m */; };
 		D1CD135424B3C97800913AE7 /* ian_instagram_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD135324B3C97800913AE7 /* ian_instagram_appTests.m */; };
 		D1CD135F24B3C97900913AE7 /* ian_instagram_appUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD135E24B3C97900913AE7 /* ian_instagram_appUITests.m */; };
+		D1CD137024B3D94100913AE7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD136F24B3D94100913AE7 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		D1CD135A24B3C97900913AE7 /* ian-instagram-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ian-instagram-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1CD135E24B3C97900913AE7 /* ian_instagram_appUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ian_instagram_appUITests.m; sourceTree = "<group>"; };
 		D1CD136024B3C97900913AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1CD136E24B3D94100913AE7 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D1CD136F24B3D94100913AE7 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D92FC2FBF7B0FF54D5C1C218 /* Pods_ian_instagram_app_ian_instagram_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ian_instagram_app_ian_instagram_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1472D0EF2D39DE012DBD35 /* Pods_ian_instagram_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ian_instagram_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -116,7 +119,6 @@
 				75A34A18B25A409A354FBCDE /* Pods-ian-instagram-appTests.debug.xcconfig */,
 				292C0888E9A594EC9F66883F /* Pods-ian-instagram-appTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -145,6 +147,7 @@
 		D1CD133624B3C97600913AE7 /* ian-instagram-app */ = {
 			isa = PBXGroup;
 			children = (
+				D1CD136C24B3D92900913AE7 /* New Group */,
 				D1CD133724B3C97600913AE7 /* AppDelegate.h */,
 				D1CD133824B3C97600913AE7 /* AppDelegate.m */,
 				D1CD133A24B3C97600913AE7 /* SceneDelegate.h */,
@@ -176,6 +179,23 @@
 				D1CD136024B3C97900913AE7 /* Info.plist */,
 			);
 			path = "ian-instagram-appUITests";
+			sourceTree = "<group>";
+		};
+		D1CD136C24B3D92900913AE7 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D1CD136D24B3D92F00913AE7 /* Views */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		D1CD136D24B3D92F00913AE7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D1CD136E24B3D94100913AE7 /* LoginViewController.h */,
+				D1CD136F24B3D94100913AE7 /* LoginViewController.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +440,7 @@
 				D1CD133924B3C97600913AE7 /* AppDelegate.m in Sources */,
 				D1CD134A24B3C97800913AE7 /* main.m in Sources */,
 				D1CD133C24B3C97600913AE7 /* SceneDelegate.m in Sources */,
+				D1CD137024B3D94100913AE7 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
