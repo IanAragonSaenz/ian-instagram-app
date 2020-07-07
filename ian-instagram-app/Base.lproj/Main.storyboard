@@ -118,11 +118,51 @@
                                 <action selector="doLogout:" destination="kQ1-sn-G8b" id="C6Q-gd-yPx"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="insta_camera_btn" id="m4m-W7-VF3">
+                            <connections>
+                                <segue destination="s4m-Lu-eAN" kind="presentation" id="x7H-QC-Aos"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQr-Bv-pYk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1652" y="104"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fEw-SD-vO8">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="s4m-Lu-eAN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OyH-6k-cSn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yad-Se-Z6r" kind="relationship" relationship="rootViewController" id="SA9-89-ohC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUy-b7-nfW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2388" y="104"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lJ6-nK-Vn1">
+            <objects>
+                <viewController id="yad-Se-Z6r" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LCg-25-GZA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="miQ-Vd-uhQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AF1-cI-mth"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NvL-fq-ce2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3113" y="104"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
+    </resources>
 </document>
