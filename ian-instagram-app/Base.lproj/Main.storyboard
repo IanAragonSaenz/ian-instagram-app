@@ -148,7 +148,7 @@
         <!--Post-->
         <scene sceneID="lJ6-nK-Vn1">
             <objects>
-                <viewController id="yad-Se-Z6r" sceneMemberID="viewController">
+                <viewController id="yad-Se-Z6r" customClass="ComposePostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LCg-25-GZA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,9 +177,21 @@
                         <viewLayoutGuide key="safeArea" id="miQ-Vd-uhQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="AF1-cI-mth">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0Tc-qR-OP9"/>
-                        <barButtonItem key="rightBarButtonItem" title="Share" id="ICc-Ik-Gf4"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0Tc-qR-OP9">
+                            <connections>
+                                <action selector="onCancel:" destination="yad-Se-Z6r" id="HWZ-Jc-r1c"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="ICc-Ik-Gf4">
+                            <connections>
+                                <action selector="onShare:" destination="yad-Se-Z6r" id="BZH-Jj-tH4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionText" destination="Us2-6n-MCu" id="JCU-rz-eS6"/>
+                        <outlet property="postImage" destination="KRV-7J-pGj" id="hN3-DL-b56"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvL-fq-ce2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
