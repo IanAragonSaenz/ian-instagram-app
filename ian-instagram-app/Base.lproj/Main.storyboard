@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="881" y="104"/>
         </scene>
-        <!--Home Feed View Controller-->
+        <!--Feed-->
         <scene sceneID="mjH-Za-nP7">
             <objects>
                 <viewController id="kQ1-sn-G8b" customClass="HomeFeedViewController" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="sK1-19-s2p"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Y8B-vV-sqF">
+                    <navigationItem key="navigationItem" title="Feed" id="Y8B-vV-sqF">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="3we-IO-cJb">
                             <connections>
                                 <action selector="doLogout:" destination="kQ1-sn-G8b" id="C6Q-gd-yPx"/>
@@ -145,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="2388" y="104"/>
         </scene>
-        <!--View Controller-->
+        <!--Post-->
         <scene sceneID="lJ6-nK-Vn1">
             <objects>
                 <viewController id="yad-Se-Z6r" sceneMemberID="viewController">
@@ -155,7 +155,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="miQ-Vd-uhQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AF1-cI-mth"/>
+                    <navigationItem key="navigationItem" title="Post" id="AF1-cI-mth">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0Tc-qR-OP9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="ICc-Ik-Gf4"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvL-fq-ce2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
