@@ -21,4 +21,15 @@
     // Configure the view for the selected state
 }
 
+- (void)setPost:(Post *)post{
+    //self.userImage.image = post.author.profilePic;
+    self.userName.text = post.author.username;
+    [post.image getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if(!error)
+            self.postImage.image = [UIImage imageWithData:data];
+    }];
+    self.likeCount.text = [[post.likeCount stringValue] stringByAppendingString:@" Likes"];
+    self.postDescription.text = [self.userName.text stringByAppendingFormat:@" %@", post.caption];
+}
+
 @end
