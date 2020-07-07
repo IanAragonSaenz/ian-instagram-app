@@ -89,7 +89,7 @@
         <!--Navigation Controller-->
         <scene sceneID="8Do-BB-G2k">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="3Vz-1L-Nzj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FeedView" modalPresentationStyle="fullScreen" id="3Vz-1L-Nzj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HOj-VT-WWq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
