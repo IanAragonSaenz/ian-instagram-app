@@ -152,7 +152,28 @@
                     <view key="view" contentMode="scaleToFill" id="LCg-25-GZA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KRV-7J-pGj">
+                                <rect key="frame" x="20" y="86" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="V0r-FB-Cr2"/>
+                                    <constraint firstAttribute="height" constant="128" id="v2N-xA-moG"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Us2-6n-MCu">
+                                <rect key="frame" x="159" y="86" width="235" height="18.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KRV-7J-pGj" firstAttribute="leading" secondItem="LCg-25-GZA" secondAttribute="leading" constant="20" id="KH4-UH-Qbq"/>
+                            <constraint firstAttribute="trailing" secondItem="Us2-6n-MCu" secondAttribute="trailing" constant="20" id="KRv-ye-w3C"/>
+                            <constraint firstItem="Us2-6n-MCu" firstAttribute="leading" secondItem="KRV-7J-pGj" secondAttribute="trailing" constant="11" id="glS-1x-Gl2"/>
+                            <constraint firstItem="Us2-6n-MCu" firstAttribute="top" secondItem="LCg-25-GZA" secondAttribute="top" constant="86" id="s3z-Zp-jWB"/>
+                            <constraint firstItem="KRV-7J-pGj" firstAttribute="top" secondItem="LCg-25-GZA" secondAttribute="top" constant="86" id="sWY-v6-fCC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="miQ-Vd-uhQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="AF1-cI-mth">
@@ -162,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvL-fq-ce2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3113" y="104"/>
+            <point key="canvasLocation" x="3111.594202898551" y="103.53260869565219"/>
         </scene>
     </scenes>
     <resources>
