@@ -7,6 +7,7 @@
 //
 
 #import "DetailPostViewController.h"
+#import "DateTools.h"
 
 @interface DetailPostViewController ()
 
@@ -35,6 +36,7 @@
     self.likeCount.text = [[self.post.likeCount stringValue] stringByAppendingString:@" Likes"];
     self.commentCount.text = [[self.post.commentCount stringValue] stringByAppendingString:@" Comments"];
     self.caption.text = [self.userName.text stringByAppendingFormat:@" %@", self.post.caption];
+    self.timeAgo.text = self.post.createdAt.timeAgoSinceNow;
 }
 
 /*
