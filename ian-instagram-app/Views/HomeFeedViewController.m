@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) UIRefreshControl *refresh;
 
 @end
 
@@ -26,8 +27,10 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
     [self fetchPosts];
+    
+    [self.refresh addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refresh atIndex:0];
 }
 
 - (void)fetchPosts{
@@ -44,6 +47,7 @@
             NSLog(@"error getting posts: %@", error.localizedDescription);
         }
     }];
+    [self.refresh endRefreshing];
 }
 
 #pragma mark - Logout
