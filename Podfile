@@ -7,6 +7,7 @@ target 'ian-instagram-app' do
 
   # Pods for ian-instagram-app
   pod 'Parse'
+  pod 'DateTools'
 
   target 'ian-instagram-appTests' do
     inherit! :search_paths
