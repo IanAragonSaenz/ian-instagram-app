@@ -38,7 +38,7 @@
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
             imagePickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
-        }else{
+        } else {
             [self sendError:@"Camera source not found"];
             return;
         }
@@ -49,7 +49,7 @@
     UIAlertAction *photoLibrary = [UIAlertAction actionWithTitle:@"Photo Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
             imagePickerC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }else{
+        } else {
             [self sendError:@"Photo library source not found"];
             return;
         }
@@ -93,7 +93,7 @@
     [Post postUserImage:self.postImage.image withCaption:self.captionText.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"post succeeded");
-        }else{
+        } else {
             NSLog(@"error with sending post: %@", error.localizedDescription);
         }
     }];
