@@ -84,9 +84,7 @@
     }];
     [alert addAction:ok];
     
-    [self presentViewController:alert animated:YES completion:^{
-        
-    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*

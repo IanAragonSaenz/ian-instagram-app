@@ -10,9 +10,11 @@
 #import "SceneDelegate.h"
 #import "Post.h"
 
-@interface ComposePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ComposePostViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
-@property (weak, nonatomic) IBOutlet UITextField *captionText;
+@property (weak, nonatomic) IBOutlet UITextView *captionText;
+
 @end
 
 @implementation ComposePostViewController
@@ -20,6 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.captionText.delegate = self;
+    self.captionText.text = @"Type your caption here...";
+    self.captionText.textColor = UIColor.lightGrayColor;
+
     UITapGestureRecognizer *tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePhoto)];
     [self.postImage addGestureRecognizer:tapImage];
     [self.postImage setUserInteractionEnabled:YES];
@@ -67,6 +73,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Sizing Image
+
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size{
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -98,6 +106,15 @@
         }
     }];
     [self onCancel:nil];
+}
+
+#pragma mark - Changing Placeholder Text
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    if(self.captionText.textColor == UIColor.lightGrayColor){
+        self.captionText.text = nil;
+        self.captionText.textColor = UIColor.blackColor;
+    }
 }
 
 #pragma mark - Error

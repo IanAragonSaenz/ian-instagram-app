@@ -40,7 +40,7 @@
 
 - (void)fetchPosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 6;
+    query.limit = 10;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     
@@ -71,7 +71,7 @@
 
 - (void)fetchMorePosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 6;
+    query.limit = 10;
     query.skip = self.posts.count;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
