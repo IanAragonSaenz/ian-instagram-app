@@ -28,10 +28,11 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self fetchPosts];
     
+    self.refresh = [[UIRefreshControl alloc] init];
     [self.refresh addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refresh atIndex:0];
+    [self fetchPosts];
 }
 
 #pragma mark - Posts Fetching
@@ -94,6 +95,5 @@
         detailView.post = sender;
     }
 }
-
 
 @end
