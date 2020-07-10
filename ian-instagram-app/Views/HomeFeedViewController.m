@@ -13,11 +13,12 @@
 #import "PostCell.h"
 #import <Parse/Parse.h>
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
 @property (strong, nonatomic) UIRefreshControl *refresh;
+@property (assign, nonatomic) BOOL isLoadingMoreData;
 
 @end
 
@@ -39,7 +40,7 @@
 
 - (void)fetchPosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 20;
+    query.limit = 6;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     
@@ -54,6 +55,38 @@
     [self.refresh endRefreshing];
 }
 
+#pragma mark - Infinite Scrolling
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isLoadingMoreData){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
+            self.isLoadingMoreData = YES;
+            [self fetchMorePosts];
+        }
+    }
+}
+
+- (void)fetchMorePosts{
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    query.limit = 6;
+    query.skip = self.posts.count;
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+        if(!error){
+            self.posts = [self.posts arrayByAddingObjectsFromArray:posts];
+            [self.tableView reloadData];
+            NSLog(@"number of posts loaded: %lu", self.posts.count);
+        }else{
+            NSLog(@"error getting posts: %@", error.localizedDescription);
+        }
+    }];
+}
+
 #pragma mark - Logout
 
 - (IBAction)doLogout:(id)sender {
@@ -61,7 +94,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
-    [PFUser logOutInBackgroundWithBlock:nil];
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        //need this open so that PFUser.current()  sets to nil
+    }];
 }
 
 #pragma mark - Table View Data Source
