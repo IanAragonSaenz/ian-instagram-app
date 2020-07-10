@@ -63,6 +63,9 @@
     }];
     [alert addAction:photoLibrary];
     
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
