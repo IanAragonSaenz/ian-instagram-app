@@ -1,8 +1,8 @@
-# Project 4 - *Name of App Here*
+# Project 4 - Ian's instagram
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+Ian's instagram is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: 22 hours spent in total
 
 ## User Stories
 
@@ -21,8 +21,8 @@ The following **optional** features are implemented:
 - [x] Run your app on your phone and use the camera to take the photo
 - [x] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [x] Show the username and creation time for each post
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
@@ -38,18 +38,15 @@ The following **additional** features are implemented:
 - [x] The app asks the user if he wants to use the camera or the photo library when posting.
 - [x] The detail post view has a scroll view.
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1.
-2.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/qSf2uHcj4G.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/r4pMcImWeB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [Recordit](http://www.Recordit.co).
 
 ## Credits
 
@@ -64,7 +61,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2020 Ian Aragon
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
