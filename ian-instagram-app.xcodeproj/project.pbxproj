@@ -25,6 +25,7 @@
 		D1CD137B24B5255700913AE7 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD137A24B5255700913AE7 /* Post.m */; };
 		D1CD137E24B52D2600913AE7 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD137D24B52D2600913AE7 /* PostCell.m */; };
 		D1CD138124B6598000913AE7 /* DetailPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD138024B6598000913AE7 /* DetailPostViewController.m */; };
+		D1CD138424B91FC200913AE7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CD138324B91FC200913AE7 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		D1CD137D24B52D2600913AE7 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		D1CD137F24B6598000913AE7 /* DetailPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailPostViewController.h; sourceTree = "<group>"; };
 		D1CD138024B6598000913AE7 /* DetailPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailPostViewController.m; sourceTree = "<group>"; };
+		D1CD138224B91FC200913AE7 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		D1CD138324B91FC200913AE7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		D92FC2FBF7B0FF54D5C1C218 /* Pods_ian_instagram_app_ian_instagram_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ian_instagram_app_ian_instagram_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE1472D0EF2D39DE012DBD35 /* Pods_ian_instagram_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ian_instagram_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -209,6 +212,8 @@
 				D1CD137524B5133200913AE7 /* ComposePostViewController.m */,
 				D1CD137F24B6598000913AE7 /* DetailPostViewController.h */,
 				D1CD138024B6598000913AE7 /* DetailPostViewController.m */,
+				D1CD138224B91FC200913AE7 /* ProfileViewController.h */,
+				D1CD138324B91FC200913AE7 /* ProfileViewController.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				D1CD133C24B3C97600913AE7 /* SceneDelegate.m in Sources */,
 				D1CD137E24B52D2600913AE7 /* PostCell.m in Sources */,
 				D1CD137024B3D94100913AE7 /* LoginViewController.m in Sources */,
+				D1CD138424B91FC200913AE7 /* ProfileViewController.m in Sources */,
 				D1CD137624B5133200913AE7 /* ComposePostViewController.m in Sources */,
 				D1CD137B24B5255700913AE7 /* Post.m in Sources */,
 			);

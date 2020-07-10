@@ -24,9 +24,8 @@
                                 <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="054-ha-V1L">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="054-ha-V1L">
                                 <rect key="frame" x="187" y="654" width="40" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,6 +41,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Txp-oq-6hW" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="324" id="Iab-85-zq6"/>
+                            <constraint firstItem="054-ha-V1L" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QbR-AA-NXL"/>
+                            <constraint firstItem="054-ha-V1L" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="296.5" id="Spo-o4-5c0"/>
                             <constraint firstItem="m0g-fC-dUB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XdY-Ux-BgI"/>
                             <constraint firstItem="Txp-oq-6hW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cxI-0k-8Hh"/>
                             <constraint firstItem="m0g-fC-dUB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fEz-if-BAB"/>
