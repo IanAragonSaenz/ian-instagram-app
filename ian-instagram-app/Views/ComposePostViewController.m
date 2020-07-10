@@ -37,7 +37,6 @@
     UIImagePickerController *imagePickerC = [UIImagePickerController new];
     imagePickerC.delegate = self;
     imagePickerC.allowsEditing = YES;
-    //imagePickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose Media" message:@"Choose camera vs photo library" preferredStyle:(UIAlertControllerStyleActionSheet)];
     
