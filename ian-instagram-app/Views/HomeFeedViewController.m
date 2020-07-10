@@ -34,6 +34,8 @@
     [self.tableView insertSubview:self.refresh atIndex:0];
 }
 
+#pragma mark - Posts Fetching
+
 - (void)fetchPosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     query.limit = 20;
@@ -58,24 +60,22 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
-    
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        
-    }];
+    [PFUser logOutInBackgroundWithBlock:nil];
 }
 
-#pragma mark - Table View
+#pragma mark - Table View Data Source
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     [cell setPost:self.posts[indexPath.row]];
-    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
+
+#pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"DetailSegue" sender:self.posts[indexPath.row]];
@@ -86,13 +86,9 @@
 - (IBAction)onLike:(id)sender {
 }
 
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"DetailSegue"]){
         DetailPostViewController *detailView = [segue destinationViewController];
         detailView.post = sender;

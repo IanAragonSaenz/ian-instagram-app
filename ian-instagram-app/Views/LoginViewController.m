@@ -22,6 +22,8 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Login/Sign Up
+
 - (IBAction)doSignUp:(id)sender {
     if([self usernameEmpty:self.usernameText.text password:self.passwordText.text])
         return;
@@ -59,6 +61,8 @@
     }];
 }
 
+#pragma mark - Input Checkers
+
 - (BOOL)usernameEmpty:(NSString *)username password:(NSString *)password{
     if([username isEqualToString:@""]){
         [self errorFound:@"Username is empty"];
@@ -70,6 +74,8 @@
     }
     return NO;
 }
+
+#pragma mark - Error Alerts
 
 - (void)errorFound:(NSString *)error{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:(UIAlertControllerStyleAlert)];

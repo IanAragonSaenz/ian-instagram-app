@@ -31,8 +31,8 @@
     UIImagePickerController *imagePickerC = [UIImagePickerController new];
     imagePickerC.delegate = self;
     imagePickerC.allowsEditing = YES;
+    //imagePickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-    imagePickerC.sourceType = UIImagePickerControllerSourceTypeCamera;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose Media" message:@"Choose camera vs photo library" preferredStyle:(UIAlertControllerStyleActionSheet)];
     
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -62,24 +62,21 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
+    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     self.postImage.image = [self resizeImage:originalImage withSize:(CGSizeMake(325, 325))];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size{
-    UIImageView *resizeeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
-    resizeeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeeImageView.image = image;
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
     
     UIGraphicsBeginImageContext(size);
-    [resizeeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     return newImage;
 }
 
