@@ -46,7 +46,7 @@
         if(!error){
             self.posts = posts;
             [self.tableView reloadData];
-        }else{
+        } else {
             NSLog(@"error getting posts: %@", error.localizedDescription);
         }
     }];

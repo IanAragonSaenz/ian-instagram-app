@@ -18,13 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
-    
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        
         configuration.applicationId = @"IanAppId";
         configuration.server = @"https://ian-instagram-app.herokuapp.com/parse";
     }];
-    
     [Parse initializeWithConfiguration:config];
     
     return YES;
