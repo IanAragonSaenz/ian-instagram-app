@@ -29,30 +29,12 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.posts = [NSArray array];
     
     self.refresh = [[UIRefreshControl alloc] init];
     [self.refresh addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refresh atIndex:0];
     [self fetchPosts];
-}
-
-#pragma mark - Posts Fetching
-
-- (void)fetchPosts{
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 10;
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"author"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
-        if(!error){
-            self.posts = posts;
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"error getting posts: %@", error.localizedDescription);
-        }
-    }];
-    [self.refresh endRefreshing];
 }
 
 #pragma mark - Infinite Scrolling
@@ -64,27 +46,33 @@
         
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
             self.isLoadingMoreData = YES;
-            [self fetchMorePosts];
+            [self fetchPosts];
         }
     }
 }
 
-- (void)fetchMorePosts{
+- (void)fetchPosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     query.limit = 10;
-    query.skip = self.posts.count;
+    BOOL isRefreshing = [self.refresh isRefreshing];
+    if(!isRefreshing)
+        query.skip = self.posts.count;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
         if(!error){
-            self.posts = [self.posts arrayByAddingObjectsFromArray:posts];
+            if(isRefreshing)
+                self.posts = posts;
+            else
+                self.posts = [self.posts arrayByAddingObjectsFromArray:posts];
             [self.tableView reloadData];
-            NSLog(@"number of posts loaded: %lu", self.posts.count);
         }else{
             NSLog(@"error getting posts: %@", error.localizedDescription);
         }
     }];
+    self.isLoadingMoreData = false;
+    [self.refresh endRefreshing];
 }
 
 #pragma mark - Logout
