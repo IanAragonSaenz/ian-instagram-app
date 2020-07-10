@@ -22,6 +22,8 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Login/Sign Up
+
 - (IBAction)doSignUp:(id)sender {
     if([self usernameEmpty:self.usernameText.text password:self.passwordText.text])
         return;
@@ -34,7 +36,7 @@
         if(succeeded){
             NSLog(@"user registered");
             [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
-        }else{
+        } else {
             NSLog(@"error occure at signup: %@", error.localizedDescription);
             [self errorFound:error.localizedDescription];
         }
@@ -52,12 +54,14 @@
         if(error){
             NSLog(@"error at login: %@", error.localizedDescription);
             [self errorFound:error.localizedDescription];
-        }else{
+        } else {
             NSLog(@"login succesful");
             [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
         }
     }];
 }
+
+#pragma mark - Input Checkers
 
 - (BOOL)usernameEmpty:(NSString *)username password:(NSString *)password{
     if([username isEqualToString:@""]){
@@ -71,16 +75,14 @@
     return NO;
 }
 
+#pragma mark - Error Alerts
+
 - (void)errorFound:(NSString *)error{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:(UIAlertActionStyleDefault) handler:nil];
     [alert addAction:ok];
     
-    [self presentViewController:alert animated:YES completion:^{
-        
-    }];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*
@@ -94,3 +96,4 @@
 */
 
 @end
+

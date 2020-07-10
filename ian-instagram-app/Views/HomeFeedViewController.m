@@ -13,11 +13,12 @@
 #import "PostCell.h"
 #import <Parse/Parse.h>
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
 @property (strong, nonatomic) UIRefreshControl *refresh;
+@property (assign, nonatomic) BOOL isLoadingMoreData;
 
 @end
 
@@ -28,15 +29,18 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self fetchPosts];
     
+    self.refresh = [[UIRefreshControl alloc] init];
     [self.refresh addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refresh atIndex:0];
+    [self fetchPosts];
 }
+
+#pragma mark - Posts Fetching
 
 - (void)fetchPosts{
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 20;
+    query.limit = 10;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     
@@ -44,11 +48,43 @@
         if(!error){
             self.posts = posts;
             [self.tableView reloadData];
-        }else{
+        } else {
             NSLog(@"error getting posts: %@", error.localizedDescription);
         }
     }];
     [self.refresh endRefreshing];
+}
+
+#pragma mark - Infinite Scrolling
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isLoadingMoreData){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
+            self.isLoadingMoreData = YES;
+            [self fetchMorePosts];
+        }
+    }
+}
+
+- (void)fetchMorePosts{
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    query.limit = 10;
+    query.skip = self.posts.count;
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+        if(!error){
+            self.posts = [self.posts arrayByAddingObjectsFromArray:posts];
+            [self.tableView reloadData];
+            NSLog(@"number of posts loaded: %lu", self.posts.count);
+        }else{
+            NSLog(@"error getting posts: %@", error.localizedDescription);
+        }
+    }];
 }
 
 #pragma mark - Logout
@@ -58,24 +94,24 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
-    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        
+        //need this open so that PFUser.current()  sets to nil
     }];
 }
 
-#pragma mark - Table View
+#pragma mark - Table View Data Source
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     [cell setPost:self.posts[indexPath.row]];
-    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
+
+#pragma mark - Table View Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"DetailSegue" sender:self.posts[indexPath.row]];
@@ -86,18 +122,13 @@
 - (IBAction)onLike:(id)sender {
 }
 
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"DetailSegue"]){
         DetailPostViewController *detailView = [segue destinationViewController];
         detailView.post = sender;
     }
 }
-
 
 @end
